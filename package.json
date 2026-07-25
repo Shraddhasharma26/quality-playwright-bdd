@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce-bdd-playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "bdd:gen": "bddgen",
+    "bdd:run": "playwright test",
+    "test:ui": "npm run bdd:gen && playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.62.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
+    "playwright-bdd": "^9.2.0"
+  }
+}
