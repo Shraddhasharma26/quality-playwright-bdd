@@ -16,7 +16,7 @@ When('the user clicks on register link', async ({ page }) => {
 
 When('the user provide the details', async ({ page }) => {
   const userdetails = new registerClass(page);
-  const email = `shraddhasharma_${Date.now()}@gmail.com`;
+  const email = 'shraddhasharma6991@gmail.com';
   await userdetails.enterEntities('shraddha', 'sharma', email, '7077100856', 'Shraddha@26', 'Shraddha@26');
 });
 
@@ -24,4 +24,4 @@ Then('the user clicks the continue link', async ({ page }) => {
   const checkbox = new registerClass(page);
   await checkbox.checkbox();
   await checkbox.clickContinue();
-});
+});

@@ -1,0 +1,60 @@
+Step 1: Install Required Packages
+Install allure-playwright and allure-commandline as development dependencies in your project terminal:
+
+Bash
+npm i -D allure-playwright allure-commandline
+Step 2: Register Allure Reporter in Playwright Config
+Add allure-playwright to the reporter section in your playwright.config.ts (or playwright.config.js) file:
+
+TypeScript
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  // ... rest of your playwright config
+  reporter: [
+    ['line'],
+    ['allure-playwright', { resultsDir: 'allure-results' }]
+  ],
+});
+Step 3: Run Your Playwright-BDD Tests
+Generate test scenarios from BDD feature files and run the tests:
+
+Bash
+npx bddgen && npx playwright test
+This run automatically creates an allure-results folder containing raw test execution output.
+
+Step 4: Generate and View the Allure Report
+You have two main options to view the generated report:
+
+Option A: Serve and open instantly
+Generates a temporary HTML report on a local web server and opens it directly in your browser:
+
+Bash
+npx allure serve allure-results
+Option B: Generate static HTML report
+Generates a standalone allure-report static folder (useful for CI/CD artifacts) and then opens it:
+
+Bash
+# Generate the report folder
+npx allure generate allure-results --clean -o allure-report
+
+# Open the generated report
+npx allure open allure-report
+Optional: Add Convenient NPM Scripts
+To streamline execution, you can add these scripts directly to your package.json:
+
+JSON
+"scripts": {
+  "test": "npx bddgen && npx playwright test",
+  "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+  "allure:open": "npx allure open allure-report",
+  "allure:serve": "npx allure serve allure-results"
+}
+Now you can simply run:
+
+Bash
+npm run test
+npm run allure:serve
+
+
+Summary of CommandsTaskCommandInstall Packagesnpm install -D allure-playwright allure-commandlineRun Testsnpx playwright testServe Report Directlynpx allure serve allure-resultsGenerate Static Reportnpx allure generate allure-results --clean -o allure-reportOpen Static Reportnpx allure open allure-report

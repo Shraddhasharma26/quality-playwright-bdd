@@ -1,0 +1,18 @@
+Npm
+New project or existing project without Playwright:
+
+Install Playwright and Playwright-BDD: npm i -D @playwright/test playwright-bdd 
+
+Install Playwright browsers: npx playwright install
+Existing project with Playwright:
+
+Install only Playwright-BDD: npm i -D playwright-bdd 
+  By default, Playwright uses different timeouts for different operations (e.g., 5 seconds for assertions, 30 seconds for test execution, and no limit for actions/navigations).
+
+to generate the allure-report :
+1. get the npm install --save-dev @playwright/test allure-playwright
+2.npx playwright test --reporter=line --reporter=allure-playwright
+3.allure generate ./allure-results
+4.npm install --save-dev allure-commandline 
+5.allure generate .\allure-results\ --clean  (or else keep it into package.json)
+6. npx allure open allure-report 

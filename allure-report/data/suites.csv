@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","17627","User register successfully","","2026-07-26","passed","2026-07-26","User register flow","src\features\register.feature.spec.js","",""
+"","21946","User login successfully","","2026-07-26","passed","2026-07-26","User login","src\features\login.feature.spec.js","",""

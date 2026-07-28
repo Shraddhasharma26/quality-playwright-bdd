@@ -45,4 +45,4 @@ class registerClass extends baseClass {
 
 export default registerClass;
 
-
+

@@ -12,8 +12,12 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
   reporter: [['list'], ['html', { open: 'never' }]],
-  use: {
+  use: 
+  {
+  
+    browserName:'chromium',
     baseURL: 'https://ecommerce-playground.lambdatest.io/',
+    headless:false,
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     video: 'on-first-retry',
