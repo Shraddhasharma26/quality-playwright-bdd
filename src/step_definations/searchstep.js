@@ -1,8 +1,6 @@
 import { createBdd } from "playwright-bdd";
 import baseClass from "../pageObject/baseClass";
-import loginCart from "../pageObject/loginCart";
-import searchResult from "../pageObject/searchResult"
-import registerClass from "../pageObject/registerClass";
+import POManager from "../pageObject/POManager";
 
 const {Given , When , Then}=createBdd();
 
@@ -14,41 +12,47 @@ Given('User launches the url site' , async({page})=>
 
 Given('user is login to website', async({page}) =>
 {
-  const registerbutton = new registerClass(page)
+  const pom = new POManager(page)
+  const registerbutton = await pom.registerPage()
  await registerbutton. myAccount()
- const loginbutton = new loginCart(page)
+ const loginbutton = await pom.loginPage()
  await loginbutton.clickLogin()
- const provideCred = new loginCart(page)
+ const provideCred = await pom.loginPage()
    await provideCred.userCredentail('shraddhasharma6991@gmail.com','Shraddha@26')
    await provideCred.submitLogin()
 })
 
 Given('user press the home button', async ({page})=>
 {
-const home = new searchResult(page)
+   const pom = new POManager(page)
+  const home = await pom.searchPage()
 await home.homeClick()
 })
 
 When('user seach for mac', async({page}) =>
 {
- const search = new searchResult(page)
+   const pom = new POManager(page)
+   const search = await pom.searchPage()
  await search.validSearch()
 })
 
 Then('user must get all relevant search result', async({page})=>
     {
- const display = new searchResult(page)
+   const pom = new POManager(page)
+   const display = await pom.searchPage()
  await display.displayResult()
     })
 
 When('user search for cloth' , async({page})=>
 {
-const invalidsearch = new searchResult(page)
+   const pom = new POManager(page)
+   const invalidsearch = await pom.searchPage()
 await invalidsearch.invalidSearch()
 })
 
 Then('user must not find any product' , async({page})=>
 {
-const checkmesg = new searchResult(page)
+   const pom = new POManager(page)
+   const checkmesg = await pom.searchPage()
 await checkmesg.assertInvalid()
 })

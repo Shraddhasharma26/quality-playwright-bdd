@@ -1,7 +1,7 @@
 import { createBdd } from "playwright-bdd";
 import baseClass from '../pageObject/baseClass.js';
-import registerClass from '../pageObject/registerClass.js';
-import loginCart from "../pageObject/loginCart";
+import POManager from "../pageObject/POManager.js";
+
 const { Given, When, Then } = createBdd();
 
  Given('the user launch the application', async({page})=>
@@ -11,19 +11,22 @@ const { Given, When, Then } = createBdd();
  })
 When('the user clicks on login link', async({page})=>
 {
- const registerbutton = new registerClass(page)
+    const pom = new POManager(page);
+ const registerbutton = await pom.registerPage();
  await registerbutton. myAccount()
- const loginbutton = new loginCart(page)
+ const loginbutton = await pom.loginPage()
  await loginbutton.clickLogin()
 })
 When('the user provide the valid credential', async ({page}) =>
 {
-    const provideCred = new loginCart(page)
+     const pom = new POManager(page);
+    const provideCred = await pom.loginPage()
    await provideCred.userCredentail('shraddhasharma6991@gmail.com','Shraddha@26')
    await provideCred.submitLogin()
 })
 Then('the user naviage home page', async ({page})=>
 {
- const assertloginsuccess = new loginCart(page)
+  const pom = new POManager(page);
+  const assertloginsuccess = await pom.loginPage()
  await assertloginsuccess.assertthesuccesslogin()
 })
