@@ -1,3 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","17627","User register successfully","","2026-07-26","passed","2026-07-26","User register flow","src\features\register.feature.spec.js","",""
-"","21946","User login successfully","","2026-07-26","passed","2026-07-26","User login","src\features\login.feature.spec.js","",""
+"","17871","User login successfully","","2026-08-01","passed","2026-08-01","User login","src\features\login.feature.spec.js","",""
+"","24289","User able to search the product successfully","","2026-08-01","passed","2026-08-01","User is able to search the item","src\features\search.feature.spec.js","",""
+"","20563","User is not able to find the valid product","","2026-08-01","passed","2026-08-01","User is able to search the item","src\features\search.feature.spec.js","",""
+"","12319","User register successfully","","2026-08-01","passed","2026-08-01","User register flow","src\features\register.feature.spec.js","",""

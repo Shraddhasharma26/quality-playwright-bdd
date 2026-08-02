@@ -1,0 +1,11 @@
+**************Starting the code*************
+[
+  'iMac',        'MacBook',
+  'MacBook Air', 'MacBook Pro',
+  'iMac',        'MacBook',
+  'MacBook Air', 'MacBook Pro',
+  'iMac',        'iMac',
+  'iMac',        'iMac',
+  'iMac',        'iMac'
+]
+-----------cleaning up scenario : User able to search the product successfully

@@ -16,3 +16,5 @@ to generate the allure-report :
 4.npm install --save-dev allure-commandline 
 5.allure generate .\allure-results\ --clean  (or else keep it into package.json)
 6. npx allure open allure-report 
+npm run allure:generate
+npx allure open allure-report

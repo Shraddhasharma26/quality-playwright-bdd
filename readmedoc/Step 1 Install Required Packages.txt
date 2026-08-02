@@ -58,3 +58,10 @@ npm run allure:serve
 
 
 Summary of CommandsTaskCommandInstall Packagesnpm install -D allure-playwright allure-commandlineRun Testsnpx playwright testServe Report Directlynpx allure serve allure-resultsGenerate Static Reportnpx allure generate allure-results --clean -o allure-reportOpen Static Reportnpx allure open allure-report
+
+Note : When ever you are creating the new feature file we need to run 
+npm run bdd:gen 
+as it should be generating the sepearte runner js file 
+
+and example to run only one file :
+npx playwright test .features-gen/src/features/search.feature.spec.js
