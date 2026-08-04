@@ -1,0 +1,55 @@
+All this steps can be found from :https://portal.azure.com/#@shraddhasharma6991gmail.onmicrosoft.com/resource/subscriptions/30f78056-f09b-436b-b3d0-37da3320158f/resourceGroups/RRD/providers/Microsoft.LoadTestService/playwrightworkspaces/playwrightwebproject/GettingStartedBlade
+
+1.install playwright service package :
+npm init @azure/playwright@latest
+
+2. setup the authentication 
+to login the exact cloud portal for auth connection we need to install azure cli :
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=msi
+then give az login
+
+3. add the browser endpoint to your setup
+azure cloud and local system connection establish now to link with azure workspace follow the command 
+export PLAYWRIGHT_SERVICE_URL = wss://eastus.api.playwright.microsoft.com/playwrightworkspaces/7cbc2ee7-455c-4005-b9a0-155463d3d4cd/browsers [this copmmand will not run as my code is written in esm module and this is for commonjs so to overcome this issue run the below commands]
+
+$env:PLAYWRIGHT_SERVICE_URL = "wss://eastus.api.playwright.microsoft.com/playwrightworkspaces/7cbc2ee7-455c-4005-b9a0-155463d3d4cd/browsers"
+npx playwright test --config=playwright.service.config.js
+package.json:
+{
+    import { defineConfig } from '@playwright/test';
+import { createAzurePlaywrightConfig, ServiceOS } from '@azure/playwright';
+import { DefaultAzureCredential } from '@azure/identity';
+import config from './playwright.config.js';
+}
+
+and then run :
+az login
+$env:PLAYWRIGHT_SERVICE_URL = "wss://eastus.api.playwright.microsoft.com/playwrightworkspaces/7cbc2ee7-455c-4005-b9a0-155463d3d4cd/browsers"
+npx playwright test --config=playwright.service.config.js
+
+4. Give Azure RBAC access for log storage
+If you want your Azure identity to write Playwright logs to a storage account, run the following in PowerShell:
+
+$storageId = az storage account show --name pwstrgrrdcac7 --resource-group RRD --query id -o tsv
+az role assignment create --assignee "2e2def96-8717-40a0-8e01-c591673c64fb" --role "Storage Blob Data Contributor" --scope $storageId
+
+This grants the specified principal permission to upload blobs to the storage account used for logs.
+eg., 
+{
+  "condition": null,
+  "conditionVersion": null,
+  "createdBy": null,
+  "createdOn": "2026-08-04T15:39:36.132347+00:00",
+  "delegatedManagedIdentityResourceId": null,
+  "description": null,
+  "id": "/subscriptions/30f78056-f09b-436b-b3d0-37da3320158f/resourceGroups/RRD/providers/Microsoft.Storage/storageAccounts/pwstrgrrdcac7/providers/Microsoft.Authorization/roleAssignments/6dad9d41-6965-4cde-92fd-b295d575e2de",
+  "name": "6dad9d41-6965-4cde-92fd-b295d575e2de",
+  "principalId": "2e2def96-8717-40a0-8e01-c591673c64fb",
+  "principalType": "User",
+  "resourceGroup": "RRD",
+  "roleDefinitionId": "/subscriptions/30f78056-f09b-436b-b3d0-37da3320158f/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+  "scope": "/subscriptions/30f78056-f09b-436b-b3d0-37da3320158f/resourceGroups/RRD/providers/Microsoft.Storage/storageAccounts/pwstrgrrdcac7",
+  "systemData": null,
+  "type": "Microsoft.Authorization/roleAssignments",
+  "updatedBy": "2e2def96-8717-40a0-8e01-c591673c64fb",
+}

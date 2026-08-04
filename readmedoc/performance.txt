@@ -1,0 +1,72 @@
+performance 
+
+benefit text 
+parking lot :
+ 2 more weeks 
+
+bugs fixes and production readiness 
+
+catlog uploaded 
+product push to production ?
+tried today pushed sample data to prod 
+but unable to make site live 
+need 1 week prior inform to saleforce to make it live 
+
+beta version live needs to saleforce team to enable prod 
+
+saleforce will provide checklist to provide the site enable 
+
+
+
+
+prod setup and bugs like site setup and small defects
+
+site merch requested : appearl is pointing to clothing
+and home is pointing to home enteraintment 
+apperal -apperal (collection/appeal)
+home to home  
+
+parking lot : 5pc [it does not work as sscc]
+product readiness -> run book [ during prod release(sscc runbook), before prod release and after prod release(live)]
+Launch run :
+https://crunchyroll.atlassian.net/wiki/spaces/STORE/pages/1471938595/Proper+Planning+Prevents+Prod+Pulverization+Checklist+5PC+-+SFCC+SFOMS (source of truth )
+
+
+5pc going to runbook 
+
+sfom -> runbook needs template 
+
+design team pdp and redesign of clp -work in progress
+ticket 386 - in progress
+
+sscc staging is fresh 
+site merch is working for sscc 
+and working on product data and move to image catlogery 
+
+
+sandbox -> stag-> dev pointing  is manual process
+
+main -> prod 
+ 
+feature branches [every commits goes to via feature ]
+svod: feature via feature release
+cr store: sprint wise release 
+
+
+QA bugs :
+
+
+svod and store -> pr are raised once it is fixed we need to check again
+note  : game vault & bento access are same 
+816 -> ticket completed 
+new benefit will be displayed by 18th aug 
+
+ 747 
+
+
+
+
+
+
+
+
