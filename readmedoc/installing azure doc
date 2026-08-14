@@ -53,3 +53,16 @@ eg.,
   "type": "Microsoft.Authorization/roleAssignments",
   "updatedBy": "2e2def96-8717-40a0-8e01-c591673c64fb",
 }
+
+----------------------------------------------------------------------
+connection from git action to azure cloud 
+1. install all the dependencies in the yml file 
+2. create the login authentization 
+ az ad sp create-for-rbac `                                                                                                                                                   
+>>   --name "my-app-sp" `
+>>   --role Contributor `
+>>   --scopes /subscriptions/30f78056-f09b-436b-b3d0-37da3320158f `
+>>   --sdk-auth
+ all this json data can be found in github secrets 
+
+ 3. provide comamnd to alloacte teh storageb in git action 

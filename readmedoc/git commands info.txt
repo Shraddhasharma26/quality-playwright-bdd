@@ -1,0 +1,21 @@
+what is this cherry picking ? why it is required ?
+
+What it is: git cherry-pick takes one or more existing commits from some branch and reapplies their changes as new commits onto your current branch.
+Why use it: to move only specific changes (bugfixes, features) onto another branch without merging the entire branch history. Useful when you want some local commits on top of origin/main but must exclude a bad commit (e.g., one containing a secret).
+How it works (common commands):
+Risks & notes:
+
+You can get merge conflicts (you saw these) which must be resolved with git add + git cherry-pick --continue (or abort).
+Cherry-picks create new commits (different hashes) — history is not identical to merging.
+If a commit contains secrets, cherry-picking it (or merging it) will still include the secret in history and can trigger GitHub push-protection (as happened with the flagged commit).
+Alternatives:
+
+git merge or git rebase (bring the whole branch instead of selective commits).
+Create a patch: git format-patch + git am.
+If a secret is already committed, remove it from history using git filter-repo / BFG and then force-push (careful, disruptive).
+In this repo: I created clean-main from origin/main and cherry-picked your local commits except the commit that contains the Azure clientSecret. That avoids push-protection blocking; the remaining step is to resolve the cherry-pick conflicts (or revise strategy).
+
+If you want, I can (pick one):
+
+resolve the conflicts automatically using our local changes or remote changes, then finish and push;
+abort the clean branch and instead remove the secret from history (I can guide or run the steps). Which do you want?
