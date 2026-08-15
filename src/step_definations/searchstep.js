@@ -1,7 +1,7 @@
 import { createBdd } from "playwright-bdd";
 import baseClass from "../pageObject/baseClass";
 import POManager from "../pageObject/POManager";
-
+const name ="shraddha"
 const {Given , When , Then}=createBdd();
 
 Given('User launches the url site' , async({page})=>
