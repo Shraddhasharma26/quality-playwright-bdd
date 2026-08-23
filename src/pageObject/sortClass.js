@@ -39,7 +39,8 @@ class sortClass extends baseClass
     {
      await page.waitForLoadState('networkidle');
      const optionlist = await this.page.locator('div.row').allTextContents()
-     console.log(optionlist)
+     console.log('the list is',optionlist)
+     
     }
 }
 export default sortClass
