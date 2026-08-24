@@ -1,0 +1,15 @@
+So the real flow is:
+
+new feature file created
+Git push triggers workflow
+npm run bdd:gen converts feature to runner spec
+Playwright runs generated spec
+Azure Playwright service executes the test
+Allure report is generated
+artifacts are uploaded
+
+If you want the same exact local sequence before pushing:
+npm ci
+npm run bdd:gen
+npx playwright test --config=playwright.service.config.js --workers=4
+npx allure generate ./allure-results --clean -o allure-report

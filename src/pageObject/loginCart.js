@@ -8,8 +8,9 @@ class loginCart extends baseClass
     {
         super(page)
         this.page=page
-         this.login = page.locator('a.list-group-item', { hasText: 'Login' });
+        this.login = page.locator('a.list-group-item', { hasText: 'Login' });
         //this.login = page.locator('a.dropdown-item', { hasText: 'Login' });
+        //this.login = page.getByRole('link', { name: /login/i }).first();
         this.emailAddress= page.getByRole('textbox',{name:'E-Mail Address'})
         this.password =page.getByRole('textbox',{name:'Password'})
         this.loginButton = page.getByRole('button',{name:'Login'})
