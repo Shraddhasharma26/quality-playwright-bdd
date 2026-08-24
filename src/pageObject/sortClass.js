@@ -1,54 +1,130 @@
 import baseClass from "./baseClass";
-import { expect } from "allure-playwright";
+import { expect } from "@playwright/test";
 
-class sortClass extends baseClass
-{
-    constructor(page)
-    {
-    super(page)
-    this.page =page
-    this.shopbycategory= page.getByRole('button',{name:'Shop by Category'})
-    //this.topcategories =page.getByRole('heading',{name:'Top categories close'})
-    this.component =page.locator('ul.navbar-nav.vertical').first()
-    this.sortBy =page.locator('(//div[@class="input-group flex-nowrap"])[2]//select[@id="input-sort-212403"]')
-    //this.sortBy = page.getByLabel(/sort/i);
+class sortClass extends baseClass {
+  constructor(page) {
+    super(page);
+
+    this.page = page;
+
+    this.shopbycategory = page.getByRole("button", {
+      name: "Shop by Category",
+    });
+
+    this.component = page.locator("ul.navbar-nav.vertical").first();
+
+    this.sortBy = page.locator("select[id^='input-sort-']");
+
+    this.productTitles = page.locator("h4.title");
+  }
+
+  async categoryPage() {
+    await this.shopbycategory.click();
+
+    await expect(this.component).toBeVisible({
+      timeout: 30000,
+    });
+  }
+
+  async catorgerySelection() {
+    const options = this.component.locator("li.nav-item");
+    const count = await options.count();
+
+    console.log("The total category count:", count);
+
+    for (let i = 0; i < count; i++) {
+      const option = options.nth(i);
+      const text = (await option.innerText()).trim();
+
+      if (text.includes("Phone, Tablets & Ipod")) {
+        console.log(`Found option: ${text}`);
+
+        await option.click();
+
+        await expect(this.productTitles.first()).toBeVisible({
+          timeout: 30000,
+        });
+
+        return;
+      }
     }
-    async categoryPage()
-    {
-        await this.shopbycategory.click()
-    }
-    async catorgerySelection()
-    {
-       const options= this.component.locator('li.nav-item')
-       const count = await options.count()
-       console.log("the total count", count)
-       for(let i=0;i<count;i++)
-       {
-        const option =options.nth(i)
-        const text =(await option.innerText()).trim()
-        if(text.includes('Phone, Tablets & Ipod'))
+
+    throw new Error(
+      'Category "Phone, Tablets & Ipod" was not found.'
+    );
+  }
+
+  async optionAtoZ() {
+    await expect(this.sortBy).toBeVisible({
+      timeout: 30000,
+    });
+
+    await expect(this.sortBy).toBeEnabled();
+
+    await this.sortBy.selectOption({
+      label: "Name (A - Z)",
+    });
+
+    await expect(this.sortBy).toHaveValue(/ASC/i);
+
+    await expect
+      .poll(
+        async () => {
+          const actualNames = (
+            await this.productTitles.allTextContents()
+          )
+            .map((name) => name.trim())
+            .filter(Boolean);
+
+          const expectedNames = [...actualNames].sort((a, b) =>
+            a.localeCompare(b, undefined, {
+              sensitivity: "base",
+              numeric: true,
+            })
+          );
+
+          return JSON.stringify(actualNames) === JSON.stringify(expectedNames);
+        },
         {
-            console.log(`found option:${text}`)
-            await option.click()
+          message: "Waiting for products to appear in A-Z order",
+          timeout: 30000,
         }
-       }
-    }
-    async optionAtoZ()
-    {
-    // await this.sortBy.click()
-    //await this.sortBy.selectOption('Name (A - Z)');
-      await this.sortBy.click()
-      await this.sortBy.selectOption({label:'Name (A - Z)'})
-    }
-    async atozPageDisplay()
-    {
-     await this.page.waitForLoadState('networkidle');
-     const optionlist = await this.page.locator('h4.title').allTextContents()
-     console.log(optionlist)
-     const expectedNamesSorted = [...optionlist].sort((a, b) => a.localeCompare(b));
-     expect(optionlist).toEqual(expectedNamesSorted);
-  
-     
-    }
+      )
+      .toBe(true);
+  }
+
+  async atozPageDisplay() {
+    await expect(this.productTitles.first()).toBeVisible({
+      timeout: 30000,
+    });
+
+    const optionList = (
+      await this.productTitles.allTextContents()
+    )
+      .map((name) => name.trim())
+      .filter(Boolean);
+
+    console.log("Displayed product names:", optionList);
+
+    expect(
+      optionList.length,
+      "No products were displayed"
+    ).toBeGreaterThan(0);
+
+    const expectedNamesSorted = [...optionList].sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        sensitivity: "base",
+        numeric: true,
+      })
+    );
+
+    expect(
+      optionList,
+      `Products are not sorted A-Z.
+Actual: ${JSON.stringify(optionList)}
+Expected: ${JSON.stringify(expectedNamesSorted)}`
+    ).toEqual(expectedNamesSorted);
+  }
 }
-export default sortClass
+
+export default sortClass;
