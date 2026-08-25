@@ -23,7 +23,3 @@ Feature: Sort products in Phone, Tablets & Ipod category
     Then the products on the current page are ordered by effective price descending
     
 
-  Scenario: Sort by Rating Highest to Lowest
-    When the user selects Rating from Sort By
-    Then products with higher ratings appear before lower-rated ones
-

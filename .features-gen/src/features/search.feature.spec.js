@@ -14,7 +14,7 @@ test.describe('User is able to search the item', () => {
     await Then('user must get all relevant search result', null, { page }); 
   });
 
-  test('User is not able to find the valid product', async ({ When, Then, page }) => { 
+  test('User is not able to find the invalid product', async ({ When, Then, page }) => { 
     await When('user search for cloth', null, { page }); 
     await Then('user must not find any product', null, { page }); 
   });

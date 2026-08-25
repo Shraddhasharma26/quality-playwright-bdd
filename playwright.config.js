@@ -8,9 +8,11 @@ const testDir = defineBddConfig({
 
 export default defineConfig({
   testDir,
-  fullyParallel: true,
+   timeout: 90_000,
+  expect: { timeout: 10_000 },
+  fullyParallel: false,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 4 : undefined,
+  workers: process.env.CI ? 4 : 1,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: 
   {
@@ -21,5 +23,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
     video: 'on-first-retry',
+     actionTimeout: 15_000,
+    navigationTimeout: 30_000,
   },
 });

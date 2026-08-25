@@ -39,33 +39,31 @@ Then ('the products on the current page are ordered by name ascending', async({p
 })
 When('the user selects Name \\(Z - A) from Sort By', async({page})=>
 {
-
+  const sortClassObject =await new sortClass(page)
+  await sortClassObject.optionZtoA()
 })
 Then('the products on the current page are ordered by name descending', async({page})=>
 {
-
+  const sortClassObject =await new sortClass(page)
+  await sortClassObject.ztoapageDisplay()
 })
 When('the user selects Price \\(Low > High) from Sort By', async({page})=>
 {
-
+  const sortClassObject =await new sortClass(page)
+  await sortClassObject.optionLowtoHigh()
 })
-Then('the products on the current page are ordered by effective price ascending',async({page})=>
+Then('the products on the current page are ordered by effective price ascending', async({page})=>
 {
-
+const sortClassObject =await new sortClass(page)
+  await sortClassObject.lowtoHighPageDisplay()
 })
  When('the user selects Price \\(High > Low) from Sort By',async({page})=>
  {
-
+  const sortClassObject =await new sortClass(page)
+  await sortClassObject.optionHightoLow()
  })
-Then('the products on the current page are ordered by effective price descending',async({page})=>
+Then('the products on the current page are ordered by effective price descending', async({page})=>
 {
-
-})
-When('the user selects Rating from Sort By',async({page})=>
-{
-
-})
-Then('products with higher ratings appear before lower-rated ones',async({page})=>
-{
-
+  const sortClassObject =await new sortClass(page)
+  await sortClassObject.hightolowPageDisplay()
 })
