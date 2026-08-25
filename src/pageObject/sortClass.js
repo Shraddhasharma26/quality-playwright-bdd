@@ -18,13 +18,14 @@ class sortClass extends baseClass
      this.productCards = page.locator('.product-layout')
     //this.sortBy = page.getByLabel(/sort/i);
     }
-    async categoryPage() {
+    async categoryPage() 
+    {
     await this.shopbycategory.click();
 
     await expect(this.component).toBeVisible({
       timeout: 10_000,
-    });
-  }
+     });
+   }
 
     async catorgerySelection()
     {
@@ -57,7 +58,7 @@ class sortClass extends baseClass
      expect(optionlist).toEqual(expectedNamesSorted);
     }
      async optionZtoA()
-    {
+     {
       await this.sortBy.selectOption({label:'Name (Z - A)'})
      }
 
