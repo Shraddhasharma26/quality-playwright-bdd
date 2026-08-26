@@ -46,6 +46,5 @@ jobs:
         name: allure-report
         path: allure-report/
         retention-days: 30
-
     - env:
       ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
