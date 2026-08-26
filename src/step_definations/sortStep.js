@@ -67,3 +67,4 @@ Then('the products on the current page are ordered by effective price descending
   const sortClassObject =await new sortClass(page)
   await sortClassObject.hightolowPageDisplay()
 })
+//run the code
