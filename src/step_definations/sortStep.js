@@ -5,7 +5,6 @@ import sortClass from "../pageObject/sortClass";
 import loginCart from "../pageObject/loginCart";
 import registerClass from "../pageObject/registerClass";
 
-const a ="dummy test"
 
 const{Given,When,Then}= createBdd()
 
