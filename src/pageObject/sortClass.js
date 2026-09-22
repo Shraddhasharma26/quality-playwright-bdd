@@ -46,16 +46,20 @@ class sortClass extends baseClass
     }
     async optionAtoZ()
     {
+      console.log("Start of option A-z")
       await this.sortBy.selectOption({label:'Name (A - Z)'})
+       console.log("end of option A-z")
     }
     async atozPageDisplay()
     {
+        console.log("Start of page display A-z")
     await this.page.waitForLoadState('domcontentloaded');
      const optionlist = (await this.page.locator('h4.title').allTextContents())
        .map((name) => name.trim())
      console.log(optionlist)
      const expectedNamesSorted = [...optionlist].sort((a, b) => a.localeCompare(b));
      expect(optionlist).toEqual(expectedNamesSorted);
+      console.log("end of page displayed A-z")
     }
      async optionZtoA()
      {

@@ -4,6 +4,8 @@ import POManager from "../pageObject/POManager";
 import sortClass from "../pageObject/sortClass";
 import loginCart from "../pageObject/loginCart";
 import registerClass from "../pageObject/registerClass";
+
+
 const{Given,When,Then}= createBdd()
 
 Given('the user launches the application',async({page})=>
@@ -59,3 +61,4 @@ Then('the products on the current page are ordered by effective price descending
   const sortClassObject =await new sortClass(page)
   await sortClassObject.hightolowPageDisplay()
 })
+//run the code

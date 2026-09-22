@@ -22,4 +22,5 @@ Feature: Sort products in Phone, Tablets & Ipod category
     When the user selects Price (High > Low) from Sort By
     Then the products on the current page are ordered by effective price descending
     
+    
 
