@@ -5,9 +5,11 @@ const testDir = defineBddConfig({
   features: 'src/features/**/*.feature',
   steps: ['src/step_definations/**/*.js', 'hook/**/*.js'],
 });
+const authFile = '.auth/user.json';
 
 export default defineConfig({
   testDir,
+  globalSetup: './auth.setup.js',
    timeout: 90_000,
   expect: { timeout: 10_000 },
   fullyParallel: false,
@@ -26,4 +28,15 @@ export default defineConfig({
      actionTimeout: 15_000,
     navigationTimeout: 30_000,
   },
+  projects: [
+    {
+      name: 'anonymous',
+      testIgnore: /.*(search|sort)\.feature\.spec\.js/,
+    },
+    {
+      name: 'authenticated',
+      testMatch: /.*(search|sort)\.feature\.spec\.js/,
+      use: { storageState: authFile },
+    },
+  ],
 });

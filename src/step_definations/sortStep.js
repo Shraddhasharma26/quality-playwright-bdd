@@ -8,16 +8,8 @@ const{Given,When,Then}= createBdd()
 
 Given('the user launches the application',async({page})=>
 {
-   const pom = new POManager(page)
    const baseurl = new baseClass(page);
    await baseurl.goToUrl('https://ecommerce-playground.lambdatest.io/');
-   const registerbutton = await pom.registerPage()
-   await registerbutton. myAccount()
-   const loginbutton = await pom.loginPage()
-   await loginbutton.clickLogin()
-   const provideCred = await pom.loginPage()
-   await provideCred.userCredentail('shraddhasharma6991@gmail.com','Shraddha@26')
-   await provideCred.submitLogin()
 })
 Given('the user navigates to the "Phone, Tablets & Ipod" category', async({page})=>
 {

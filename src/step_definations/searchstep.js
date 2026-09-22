@@ -11,14 +11,7 @@ Given('User launches the url site' , async({page})=>
 
 Given('user is login to website', async({page}) =>
 {
-  const pom = new POManager(page)
-  const registerbutton = await pom.registerPage()
- await registerbutton. myAccount()
- const loginbutton = await pom.loginPage()
- await loginbutton.clickLogin()
- const provideCred = await pom.loginPage()
-   await provideCred.userCredentail('shraddhasharma6991@gmail.com','Shraddha@26')
-   await provideCred.submitLogin()
+   await page.waitForLoadState('domcontentloaded');
 })
 
 Given('user press the home button', async ({page})=>

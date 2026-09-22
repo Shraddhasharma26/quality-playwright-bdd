@@ -1,9 +1,0 @@
-{"version":8,"type":"context-options","origin":"library","browserName":"chromium","playwrightVersion":"1.62.0","options":{"noDefaultViewport":false,"viewport":{"width":1280,"height":720},"ignoreHTTPSErrors":false,"javaScriptEnabled":true,"bypassCSP":false,"locale":"en-US","offline":false,"isMobile":false,"hasTouch":false,"colorScheme":"light","acceptDownloads":"accept","baseURL":"https://ecommerce-playground.lambdatest.io/","serviceWorkers":"allow","selectorEngines":[],"testIdAttributeName":"data-testid"},"platform":"win32","wallTime":1787462221932,"monotonicTime":200490.638,"sdkLanguage":"javascript","testIdAttributeName":"data-testid","contextId":"browser-context@dee57d3de47ce756189681c7fee4b7d1","title":"seed.spec.ts:4 › Test group › seed"}
-{"type":"before","callId":"call@6","startTime":200525.882,"class":"BrowserContext","method":"newPage","params":{},"stepId":"pw:api@37"}
-{"type":"event","time":201840.63,"class":"BrowserContext","method":"page","params":{"pageId":"page@4dd74f1fefaaecadd68a2e2bab74b674"}}
-{"type":"after","callId":"call@6","endTime":201840.912,"result":{"page":"<Page>"}}
-{"type":"before","callId":"call@8","startTime":201868.095,"class":"Frame","method":"title","params":{},"stepId":"pw:api@39","pageId":"page@4dd74f1fefaaecadd68a2e2bab74b674"}
-{"type":"after","callId":"call@8","endTime":201892.521,"result":{"value":""}}
-{"type":"before","callId":"call@10","startTime":201897.74,"class":"Frame","method":"ariaSnapshot","params":{"mode":"ai"},"stepId":"pw:api@40","pageId":"page@4dd74f1fefaaecadd68a2e2bab74b674"}
-{"type":"after","callId":"call@10","endTime":201957.201,"result":{"snapshot":""}}
-{"type":"screencast-frame","pageId":"page@4dd74f1fefaaecadd68a2e2bab74b674","sha1":"page@4dd74f1fefaaecadd68a2e2bab74b674-1787462224302.jpeg","width":1280,"height":720,"timestamp":202859.908,"frameSwapWallTime":1787462224293.801}
